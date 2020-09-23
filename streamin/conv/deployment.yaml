@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,28 +17,28 @@ spec:
         k8s-app: conv
     spec:
       containers:
-        - image: davmatjo/streamin-conv:sha-129f18c0
-          imagePullPolicy: Always
-          name: conv
-          ports:
-            - containerPort: 8090
-              protocol: TCP
-          volumeMounts:
-            - mountPath: /app/out
-              name: media
-            - mountPath: /app/in
-              name: ingest
-            - mountPath: /app/config.yaml
-              name: config
-              subPath: config.yaml
+      - image: davmatjo/streamin-conv:edge
+        imagePullPolicy: Always
+        name: conv
+        ports:
+        - containerPort: 8090
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /app/out
+          name: media
+        - mountPath: /app/in
+          name: ingest
+        - mountPath: /app/config.yaml
+          name: config
+          subPath: config.yaml
       restartPolicy: Always
       volumes:
-        - name: media
-          persistentVolumeClaim:
-            claimName: media
-        - name: ingest
-          persistentVolumeClaim:
-            claimName: ingest
-        - name: config
-          configMap:
-            name: conv
+      - name: media
+        persistentVolumeClaim:
+          claimName: media
+      - name: ingest
+        persistentVolumeClaim:
+          claimName: ingest
+      - name: config
+        configMap:
+          name: conv
