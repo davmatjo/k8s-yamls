@@ -14,7 +14,7 @@ spec:
         k8s-app: api
     spec:
       containers:
-        - image: davmatjo/streamin-api:sha-d3b5ba17
+        - image: davmatjo/streamin-api:edge
           imagePullPolicy: Always
           name: api
           ports:
