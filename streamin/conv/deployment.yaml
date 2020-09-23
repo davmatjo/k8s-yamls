@@ -22,7 +22,7 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 50
             preference:
-            - matchExpressions:
+              matchExpressions:
                 - key: davmatjo.com/class
                   operator: In
                   values:
