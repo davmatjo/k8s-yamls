@@ -17,7 +17,7 @@ spec:
         k8s-app: conv
     spec:
       containers:
-      - image: davmatjo/streamin-conv:sha-0441d5af
+      - image: davmatjo/streamin-conv:edge
         imagePullPolicy: Always
         name: conv
         ports:
