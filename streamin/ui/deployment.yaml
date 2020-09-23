@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,10 +17,10 @@ spec:
         k8s-app: ui
     spec:
       containers:
-        - image: davmatjo/streamin-ui:sha-910c54c1
-          imagePullPolicy: Always
-          name: ui
-          ports:
-            - containerPort: 8100
-              protocol: TCP
+      - image: davmatjo/streamin-ui:edge
+        imagePullPolicy: Always
+        name: ui
+        ports:
+        - containerPort: 8100
+          protocol: TCP
       restartPolicy: Always
