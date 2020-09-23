@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: conv
+  namespace: streamin
+spec:
+  ports:
+    - port: 80
+      targetPort: 8090
+  selector:
+    k8s-app: conv
+  type: ClusterIP

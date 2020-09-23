@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui
+  namespace: streamin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: ui
+  template:
+    metadata:
+      labels:
+        k8s-app: ui
+    spec:
+      containers:
+        - image: davmatjo/streamin-ui:sha-910c54c1
+          imagePullPolicy: Always
+          name: ui
+          ports:
+            - containerPort: 8100
+              protocol: TCP
+      restartPolicy: Always

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: conv
+  namespace: streamin
+data:
+  config.yaml: |
+    dirs:
+      unprocessed: /app/in
+      processed: /app/out
+    port: 8090

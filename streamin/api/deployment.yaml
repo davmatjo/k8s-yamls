@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: streamin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: api
+  template:
+    metadata:
+      labels:
+        k8s-app: api
+    spec:
+      containers:
+        - image: davmatjo/streamin-api:sha-d3b5ba17
+          imagePullPolicy: Always
+          name: api
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /app/media
+              name: media
+      restartPolicy: Always
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media

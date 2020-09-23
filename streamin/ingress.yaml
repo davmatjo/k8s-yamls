@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  name: ingress
+  namespace: streamin
+spec:
+  rules:
+    - host: stream.davmatjo.com
+      http:
+        paths:
+          - path: /api/conv
+            backend:
+              serviceName: conv
+              servicePort: 80
+
+          - path: /api
+            backend:
+              serviceName: api
+              servicePort: 80
+
+          - path: /
+            backend:
+              serviceName: ui
+              servicePort: 80
+
+  tls:
+    - hosts:
+        - stream.davmatjo.com
+      secretName: streamin-tls

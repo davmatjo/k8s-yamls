@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui
+  namespace: streamin
+spec:
+  ports:
+    - port: 80
+      targetPort: 8100
+  selector:
+    k8s-app: ui
+  type: ClusterIP
