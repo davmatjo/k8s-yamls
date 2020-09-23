@@ -15,6 +15,16 @@ spec:
       labels:
         k8s-app: api
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 50
+              preference:
+                - matchExpressions:
+                    - key: davmatjo.com/class
+                      operator: In
+                      values:
+                        - fast
       containers:
         - image: davmatjo/streamin-api:edge
           imagePullPolicy: Always

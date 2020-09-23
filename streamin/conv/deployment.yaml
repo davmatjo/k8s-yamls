@@ -7,6 +7,7 @@ metadata:
   annotations:
     fluxcd.io/automated: "true"
 spec:
+
   replicas: 1
   selector:
     matchLabels:
@@ -16,6 +17,16 @@ spec:
       labels:
         k8s-app: conv
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 50
+            preference:
+            - matchExpressions:
+                - key: davmatjo.com/class
+                  operator: In
+                  values:
+                    - fast
       containers:
       - image: davmatjo/streamin-conv:edge
         imagePullPolicy: Always
