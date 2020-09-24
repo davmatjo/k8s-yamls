@@ -19,14 +19,13 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 50
-            preference:
-              matchExpressions:
-                - key: davmatjo.com/class
-                  operator: In
-                  values:
-                    - fast
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: davmatjo.com/class
+                operator: In
+                values:
+                  - fast
       containers:
       - image: davmatjo/streamin-conv:edge
         imagePullPolicy: Always
