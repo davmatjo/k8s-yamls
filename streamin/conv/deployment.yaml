@@ -27,7 +27,7 @@ spec:
                 values:
                 - fast
       containers:
-      - image: davmatjo/streamin-conv:sha-e38d2bcd
+      - image: davmatjo/streamin-conv:sha-f6dafe3f
         imagePullPolicy: Always
         name: conv
         ports:
